@@ -221,6 +221,55 @@
       </span>
     </div>
   </section>
+
+  <section class="support">
+  <div class="support-inner">
+    <p>Support The Signal</p>
+
+    <h2>
+      Independent signal needs independent support.
+    </h2>
+
+    <span>
+      NEXOR is built independently. Support helps fund future signal
+      studies, hardware culture and calmer digital environments.
+    </span>
+
+    <div class="support-actions">
+
+  <a href="#" class="btc-button" id="open-btc-modal">
+  <img src="/btc-icon.png" alt="BTC" />
+  Support via Lightning
+</a>
+
+      <a
+        href="https://buymeacoffee.com/nexorsignal"
+        target="_blank"
+        class="coffee-button"
+      >
+        <img src="/coffee-icon.png" alt="Coffee" />
+        Buy Me A Coffee
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<div class="btc-modal" id="btc-modal">
+  <div class="btc-modal-card">
+  <button class="btc-close" id="close-btc-modal">//</button>
+
+    <p>Lightning Support</p>
+
+    <h3>Scan to support NEXOR //</h3>
+
+    <img class="btc-qr" src="/lightning-qr.png" alt="Lightning QR Code" />
+
+    <button class="copy-lightning" id="copy-lightning">
+      Copy Lightning Invoice
+    </button>
+  </div>
+</div>
 </main>
 
 <style>
@@ -913,4 +962,343 @@
 .wide-card h3 {
   max-width: 900px;
 }
+.support {
+  position: relative;
+  z-index: 2;
+  width: min(980px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 20px 0 180px;
+}
+
+.support-inner {
+  position: relative;
+  overflow: hidden;
+  padding: 58px;
+  border-radius: 34px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(183,255,60,0.08),
+      transparent 34%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.05),
+      rgba(255,255,255,0.015)
+    ),
+    #0b1016;
+  text-align: center;
+}
+
+.support-inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(183,255,60,0.04),
+      transparent 58%
+    );
+  pointer-events: none;
+}
+
+.support p {
+  position: relative;
+  z-index: 2;
+  color: #b7ff3c;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 12px;
+}
+
+.support h2 {
+  position: relative;
+  z-index: 2;
+  margin: 22px auto 0;
+  max-width: 760px;
+  font-size: clamp(40px, 5vw, 72px);
+  line-height: 0.94;
+  letter-spacing: -0.06em;
+}
+
+.support span {
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin: 26px auto 0;
+  max-width: 620px;
+  color: rgba(245,247,250,0.58);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.support-actions {
+  position: relative;
+  z-index: 2;
+  margin-top: 42px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.support-actions a {
+  padding: 14px 22px;
+  border-radius: 999px;
+  background: #b7ff3c;
+  color: #050608;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
+}
+
+.support-actions a:hover {
+  transform: translateY(-2px);
+}
+
+.ghost-support {
+  background: rgba(255,255,255,0.04) !important;
+  color: rgba(245,247,250,0.82) !important;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+@media (max-width: 820px) {
+  .support-inner {
+    padding: 36px 28px;
+  }
+
+  .support h2 {
+    font-size: 42px;
+  }
+
+  .support span {
+    font-size: 16px;
+  }
+
+  .support-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btc-button,
+  .coffee-button {
+    width: 100%;
+    min-width: unset;
+  }
+}
+
+.support-actions {
+  margin-top: 52px;
+
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.support h2 {
+  max-width: 920px;
+}
+
+.btc-button,
+.coffee-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  padding: 18px 30px;
+
+  min-width: 240px;
+
+  border-radius: 999px;
+
+  text-decoration: none;
+
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease,
+    opacity 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.btc-button {
+  background: #ff9f0a;
+
+  color: #050608;
+
+  border: 1px solid rgba(255,159,10,0.25);
+
+  box-shadow:
+    0 0 24px rgba(255,159,10,0.18);
+}
+
+.btc-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 40px rgba(255,159,10,0.32);
+}
+
+.coffee-button {
+  background: rgba(255,255,255,0.04);
+
+  color: rgba(245,247,250,0.88);
+
+  border: 1px solid rgba(183,255,60,0.12);
+
+  box-shadow:
+    0 0 24px rgba(183,255,60,0.06);
+}
+
+.coffee-button:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(183,255,60,0.22);
+
+  box-shadow:
+    0 0 34px rgba(183,255,60,0.12);
+}
+
+.btc-button img,
+.coffee-button img {
+  width: 22px;
+  height: 22px;
+
+  object-fit: contain;
+}
+
+.btc-button img {
+  filter:
+    drop-shadow(0 0 8px rgba(255,170,0,0.35));
+}
+
+.coffee-button img {
+  filter:
+    drop-shadow(0 0 10px rgba(183,255,60,0.28));
+}
+.btc-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.72);
+  backdrop-filter: blur(18px);
+}
+
+.btc-modal.active {
+  display: flex;
+}
+
+.btc-modal-card {
+  position: relative;
+  width: min(420px, calc(100% - 40px));
+  padding: 36px;
+  border-radius: 32px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background:
+    radial-gradient(circle at top, rgba(183,255,60,0.08), transparent 42%),
+    #0b1016;
+  text-align: center;
+}
+
+.btc-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 34px;
+  height: 34px;
+
+  border: 0;
+  border-radius: 999px;
+
+  background: rgba(255,255,255,0.06);
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.08em;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.btc-modal-card p {
+  color: #b7ff3c;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 12px;
+}
+
+.btc-modal-card h3 {
+  margin: 14px 0 24px;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.btc-qr {
+  width: 240px;
+  height: 240px;
+  border-radius: 22px;
+  background: white;
+  padding: 12px;
+}
+
+.copy-lightning {
+  margin-top: 24px;
+  padding: 14px 20px;
+  border-radius: 999px;
+  border: 0;
+  background: #b7ff3c;
+  color: #050608;
+  font-weight: 700;
+  cursor: pointer;
+}
 </style>
+<script>
+  const invoice =
+    "lno1zrxq8pjw7qjlm68mtp7e3yvxee4y5xrgjhhyf2fxhlphpckrvevh50u0qgr7pvl5dp5s060rhjmjdquwuxfsx0zczc4hc2dlq6sr9vn98flxkqsrhuezhjzh87rhtr547ghklepc7x5m0h3hrkkjgfel5kx7n3u96e4qqvlnj0lxru8cdr290s34udyugdvwwcm0efxzv83ks9sq4zrq2tmnhmc3dvvu59l3kkxgl4pewz0r5rf44jayqtr3rx28ea7g2v8m3gs6jyptuh3kllgn6h3scsfzg5lsl02ah0qegqqstm2a3jh08gy3z93xlg52wzc48v";
+
+  const modal = document.getElementById("btc-modal");
+  const openBtn = document.getElementById("open-btc-modal");
+  const closeBtn = document.getElementById("close-btc-modal");
+  const copyBtn = document.getElementById("copy-lightning");
+
+  openBtn?.addEventListener("click", (event) => {
+    event.preventDefault();
+    modal?.classList.add("active");
+  });
+
+  closeBtn?.addEventListener("click", () => {
+    modal?.classList.remove("active");
+  });
+
+  modal?.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.classList.remove("active");
+    }
+  });
+
+  copyBtn?.addEventListener("click", async () => {
+    await navigator.clipboard.writeText(invoice);
+    copyBtn.textContent = "Copied";
+  });
+</script>

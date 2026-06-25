@@ -1,0 +1,38 @@
+---
+import { marketRows } from '@/data/content';
+const { compact = false } = Astro.props;
+---
+<aside class:list={['market-card', { compact }]} data-market-widget>
+  <div class="market-topline">
+    <div>
+      <div class="meta">Live Market Snapshot</div>
+      <p class="market-status" data-market-status>Loading live market data…</p>
+    </div>
+    <button class="market-refresh" type="button" data-market-refresh aria-label="Refresh market data">Refresh</button>
+  </div>
+
+  <div class="market-list">
+    {marketRows.map((row) => (
+      <div
+        class="market-row"
+        data-symbol={row.symbol}
+        data-yahoo={row.yahoo}
+        data-fallback-price={row.price}
+        data-fallback-change={row.change}
+      >
+        <div class="market-name"><b>{row.symbol}</b><br /><span>{row.name}</span></div>
+        <svg class="spark" viewBox="0 0 100 32" fill="none" aria-hidden="true" data-spark>
+          <path d={row.trend === 'up' ? 'M2 24 L14 19 L26 21 L38 10 L50 14 L62 8 L74 12 L86 5 L98 8' : 'M2 8 L14 12 L26 9 L38 18 L50 15 L62 22 L74 19 L86 26 L98 24'} stroke="currentColor" stroke-width="3" class={row.trend === 'up' ? 'up' : 'down'} />
+        </svg>
+        <span class="market-price" data-price>{row.price}</span>
+        <b class={row.trend === 'up' ? 'up market-change' : 'down market-change'} data-change>{row.change}</b>
+      </div>
+    ))}
+  </div>
+
+  <div class="market-footer">
+    <a class="link-arrow" href="/markets/">View markets <span>→</span></a>
+    <span data-market-updated>Waiting for first live refresh</span>
+  </div>
+</aside>
+<script src="/assets/markets.js" defer></script>

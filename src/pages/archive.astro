@@ -1,0 +1,29 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { allPosts } from '@/data/content';
+import type { Post } from '@/data/content';
+const hrefFor = (post: Post) => post.type === 'essay' ? `/essays/${post.slug}/` : `/signal/${post.slug}/`;
+---
+<BaseLayout title="Archive" path="/archive/" description="Complete NEXOR SIGNAL archive.">
+  <section class="container page-hero">
+    <div class="eyebrow">Archive</div>
+    <h1>All signal. One place.</h1>
+    <p>Essays, signal notes, market notes, systems tests, and compute culture observations.</p>
+  </section>
+  <section class="container section" id="archive-search">
+    <div class="archive-tools">
+      <input class="input" type="search" placeholder="Search signal notes, essays, markets…" aria-label="Search archive" data-archive-search />
+      <span data-archive-count>{allPosts.length} posts</span>
+    </div>
+    <div class="archive-list" data-archive-list>
+      {allPosts.map((post) => (
+        <a class="archive-item" href={hrefFor(post)} data-archive-item data-title={`${post.title} ${post.description} ${post.label} ${post.source ?? ''}`}>
+          <span>{post.date}</span>
+          <strong>{post.title}</strong>
+          <span>{post.label}</span>
+        </a>
+      ))}
+    </div>
+  </section>
+  <script src="/assets/archive-search.js" defer></script>
+</BaseLayout>

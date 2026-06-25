@@ -1,0 +1,11 @@
+---
+import type { Post } from '@/data/content';
+const { post, hrefBase = post.type === 'essay' ? '/essays/' : '/signal/' } = Astro.props as { post: Post; hrefBase?: string };
+const href = `${hrefBase}${post.slug}/`;
+---
+<article class="card">
+  <small>{post.label}</small>
+  <h3><a href={href}>{post.title}</a></h3>
+  <p>{post.description}</p>
+  <a class="read" href={href}>Read more →</a>
+</article>

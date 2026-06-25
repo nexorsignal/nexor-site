@@ -1,0 +1,12 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { site } from '@/config/site';
+---
+<BaseLayout title="Contact" path="/contact/" description="Contact NEXOR SIGNAL.">
+  <section class="container page-hero">
+    <div class="eyebrow">Contact</div>
+    <h1>Send signal. Not spam.</h1>
+    <p>For ideas, corrections, support, collaborations, or feedback.</p>
+    <a class="btn" href={`mailto:${site.email}`}>Email {site.email}</a>
+  </section>
+</BaseLayout>

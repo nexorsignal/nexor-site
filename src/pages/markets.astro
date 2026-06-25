@@ -1,0 +1,33 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import MarketSnapshot from '@/components/MarketSnapshot.astro';
+import PostCard from '@/components/PostCard.astro';
+import Newsletter from '@/components/Newsletter.astro';
+import { signalPosts } from '@/data/content';
+const marketPosts = signalPosts.filter((post) => post.label === 'Markets');
+---
+<BaseLayout title="Markets" path="/markets/" description="Live market snapshot and market signal notes from NEXOR SIGNAL.">
+  <section class="container page-hero">
+    <div class="eyebrow">Markets</div>
+    <h1>Markets reward signal, not noise.</h1>
+    <p>Live public market snapshot with graceful fallback, plus short market notes designed to separate movement from meaning.</p>
+  </section>
+  <section class="container section">
+    <div class="split">
+      <MarketSnapshot />
+      <div class="card">
+        <small>Market Rule</small>
+        <h3>Do not trade the feed.</h3>
+        <p>Watch liquidity, positioning, trend, and time. The goal is not more reaction. The goal is cleaner interpretation.</p>
+        <a class="read" href="/signal/markets-reward-signal/">Read the note →</a>
+      </div>
+    </div>
+  </section>
+  <section class="container section">
+    <div class="section-head"><div><div class="eyebrow">Market Notes</div></div></div>
+    <div class="grid-3">
+      {marketPosts.map((post) => <PostCard post={post} />)}
+    </div>
+  </section>
+  <Newsletter />
+</BaseLayout>

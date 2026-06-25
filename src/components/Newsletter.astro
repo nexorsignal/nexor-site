@@ -1,0 +1,16 @@
+---
+import { site } from '@/config/site';
+---
+<section class="container section" id="newsletter">
+  <div class="newsletter">
+    <div>
+      <div class="eyebrow">Stay in the signal</div>
+      <h2>Get essays and insights straight to your inbox.</h2>
+      <p>No spam. Just signal.</p>
+    </div>
+    <form class="form" action={site.newsletter.action} method="post" enctype="text/plain">
+      <input class="input" type="email" name="email" placeholder="Enter your email" aria-label="Email address" required />
+      <button class="btn solid" type="submit">Subscribe</button>
+    </form>
+  </div>
+</section>

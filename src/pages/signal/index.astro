@@ -1,0 +1,19 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PostCard from '@/components/PostCard.astro';
+import Newsletter from '@/components/Newsletter.astro';
+import { signalPosts } from '@/data/content';
+---
+<BaseLayout title="Signal Notes" path="/signal/" description="Short NEXOR SIGNAL posts adapted from video ideas, tests, systems thinking, and market signal.">
+  <section class="container page-hero">
+    <div class="eyebrow">Signal Notes</div>
+    <h1>Short ideas, expanded into readable signal.</h1>
+    <p>Compact written versions of NEXOR SIGNAL videos, tests, market observations, and systems notes.</p>
+  </section>
+  <section class="container section">
+    <div class="grid-3">
+      {signalPosts.map((post) => <PostCard post={post} />)}
+    </div>
+  </section>
+  <Newsletter />
+</BaseLayout>

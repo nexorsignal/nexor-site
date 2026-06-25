@@ -42,7 +42,7 @@ const fallbackRow = (row: MarketRow): LiveMarketPayload => ({
   name: row.name,
   price: fallbackNumber(row.price),
   changePct: fallbackNumber(row.change),
-  trend: row.trend,
+  trend: row.trend === 'down' ? 'down' : 'up',
   closes: [],
   live: false,
   source: 'fallback'

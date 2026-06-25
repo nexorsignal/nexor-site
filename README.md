@@ -20,3 +20,7 @@ npm run preview
 - Buy Me a Coffee points to `https://buymeacoffee.com/nexorsignal`.
 - Bitcoin / Lightning support is integrated on `/support/` with Phoenix Wallet QR.
 - Update site config in `src/config/site.ts` if you want to change links later.
+
+
+Official domain: https://nexorsignal.com
+Live markets use a server API route with Yahoo, Stooq, and CoinGecko fallbacks.

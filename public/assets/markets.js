@@ -67,13 +67,13 @@
       const live = Number(payload.liveCount ?? 0);
       const now = payload.updatedAt ? new Date(payload.updatedAt) : new Date();
       if (status) status.textContent = live > 0
-        ? `${live}/${rows.length} live feeds updated. Public market data may be slightly delayed.`
-        : 'Live feed unavailable. Static fallback is displayed.';
+        ? `${live}/${rows.length} market feeds updated. Public data may be delayed.`
+        : 'Live sources unavailable. Fallback snapshot displayed.';
       if (updated) updated.textContent = rendered > 0
         ? `Updated ${now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`
         : 'Fallback snapshot';
     } catch (error) {
-      if (status) status.textContent = 'Live feed unavailable. Static fallback is displayed.';
+      if (status) status.textContent = 'Live sources unavailable. Fallback snapshot displayed.';
       if (updated) updated.textContent = 'Fallback snapshot';
     }
     button?.removeAttribute('disabled');

@@ -1,0 +1,22 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { essays } from '@/data/content';
+
+export function getStaticPaths() {
+  return essays.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+}
+const { post } = Astro.props;
+---
+<BaseLayout title={post.title} description={post.description} path={`/essays/${post.slug}/`}>
+  <article class="container article">
+    <div class="eyebrow">{post.label}</div>
+    <h1>{post.title}</h1>
+    <p class="desc">{post.description}</p>
+    <p class="meta">{post.date} · {post.readTime}</p>
+    {post.body.map((paragraph) => <p>{paragraph}</p>)}
+    <div class="article-nav">
+      <a class="btn ghost" href="/essays/">← Back to Essays</a>
+      <a class="btn" href="/support/">Support NEXOR SIGNAL</a>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,67 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Newsletter from '@/components/Newsletter.astro';
+import { site } from '@/config/site';
+---
+<BaseLayout title="Support" path="/support/" description="Support NEXOR SIGNAL.">
+  <section class="container page-hero">
+    <div class="eyebrow">Support</div>
+    <h1>Support the signal.</h1>
+    <p>NEXOR SIGNAL is built as an independent signal layer. Reader support helps fund research, writing, tests, and late-night compute culture.</p>
+  </section>
+
+  <section class="container section">
+    <div class="split support-grid">
+      <article class="card support-card">
+        <small>Buy Me a Coffee</small>
+        <h3>Support with a simple one-click contribution.</h3>
+        <p>Use Buy Me a Coffee if you want the fastest and easiest way to support NEXOR SIGNAL.</p>
+        <a class="btn solid" href={site.support.coffee} target="_blank" rel="noopener noreferrer">Open Buy Me a Coffee</a>
+        <p class="support-link-text">buymeacoffee.com/nexorsignal</p>
+      </article>
+
+      <article class="card support-card" id="bitcoin">
+        <small>Phoenix Wallet · Bitcoin / Lightning</small>
+        <h3>Support the signal with Bitcoin.</h3>
+        <p>Scan the QR code with Phoenix Wallet or open the Lightning request directly on a compatible device.</p>
+        <div class="qr-wrap">
+          <img src="/assets/phoenix-wallet-qr.png" alt="Phoenix Wallet QR code for supporting NEXOR SIGNAL" />
+        </div>
+        <div class="invoice-box">
+          <code id="lightning-invoice">{site.support.bitcoinInvoice}</code>
+        </div>
+        <div class="support-actions-inline">
+          <a class="btn solid" href={site.support.bitcoinLightning}>Open in Wallet</a>
+          <button class="btn" type="button" id="copy-lightning">Copy Invoice</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="container section">
+    <article class="card">
+      <small>Why support</small>
+      <h3>Cleaner signal needs independence.</h3>
+      <p>No feed-chasing. No sponsored noise. Support keeps the site focused on useful essays, signal notes, market snapshots, and compute culture.</p>
+    </article>
+  </section>
+
+  <Newsletter />
+
+  <script is:inline>
+    const btn = document.getElementById('copy-lightning');
+    const code = document.getElementById('lightning-invoice');
+    btn?.addEventListener('click', async () => {
+      const value = code?.textContent?.trim();
+      if (!value) return;
+      try {
+        await navigator.clipboard.writeText(value);
+        btn.textContent = 'Copied';
+        setTimeout(() => btn.textContent = 'Copy Invoice', 1600);
+      } catch (e) {
+        btn.textContent = 'Copy failed';
+        setTimeout(() => btn.textContent = 'Copy Invoice', 1600);
+      }
+    });
+  </script>
+</BaseLayout>

@@ -1,0 +1,19 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PostCard from '@/components/PostCard.astro';
+import Newsletter from '@/components/Newsletter.astro';
+import { essays } from '@/data/content';
+---
+<BaseLayout title="Essays" path="/essays/" description="Longer NEXOR SIGNAL essays on AI, systems, compute culture, and markets.">
+  <section class="container page-hero">
+    <div class="eyebrow">Essays</div>
+    <h1>Longer thinking for systems, compute, and markets.</h1>
+    <p>Deep dives and frameworks. Less feed. More signal.</p>
+  </section>
+  <section class="container section">
+    <div class="grid-3">
+      {essays.map((post) => <PostCard post={post} hrefBase="/essays/" />)}
+    </div>
+  </section>
+  <Newsletter />
+</BaseLayout>

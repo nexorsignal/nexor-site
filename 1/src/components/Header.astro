@@ -1,0 +1,22 @@
+---
+import { nav } from '@/config/site';
+const { currentPath = '/' } = Astro.props;
+const isActive = (href: string) => href === '/' ? currentPath === '/' : currentPath.startsWith(href);
+---
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="/" aria-label="NEXOR SIGNAL home">
+      <span class="mark" aria-hidden="true"><i></i><i></i></span>
+      <span>NEXOR SIGNAL</span>
+    </a>
+    <nav class="navlinks" aria-label="Main navigation">
+      {nav.map((item) => <a class:list={[{ active: isActive(item.href) }]} href={item.href}>{item.label}</a>)}
+    </nav>
+    <div class="nav-actions">
+      <a class="icon-link" href="/archive/#archive-search" aria-label="Search archive">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </a>
+      <a class="btn" href="/#newsletter">Subscribe</a>
+    </div>
+  </div>
+</header>

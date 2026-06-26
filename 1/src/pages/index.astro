@@ -1,0 +1,56 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PostCard from '@/components/PostCard.astro';
+import MarketSnapshot from '@/components/MarketSnapshot.astro';
+import Newsletter from '@/components/Newsletter.astro';
+import SupportSection from '@/components/SupportSection.astro';
+import { signalPosts, essays } from '@/data/content';
+
+const heroPosts = signalPosts.slice(0, 3);
+const featured = essays.find((post) => post.featured) ?? essays[0];
+const latestSignal = signalPosts[0];
+---
+<BaseLayout path="/">
+  <section class="container hero">
+    <div>
+      <div class="eyebrow">NEXOR SIGNAL</div>
+      <h1>SIGNAL<br />OVER<br />NOISE</h1>
+      <p>AI, systems, markets, and compute culture. Clear thinking for people who build, buy, and decide.</p>
+      <a class="link-arrow" href={`/signal/${latestSignal.slug}/`}>Read the latest signal note <span>→</span></a>
+    </div>
+    <div class="hero-visual" aria-label="NEXOR SIGNAL hero mark">
+      <img src="/assets/nexor-signal-hero.png" alt="NEXOR SIGNAL slash mark on dark grid" />
+    </div>
+  </section>
+
+  <section class="container section tiktok-section">
+    <div class="section-head minimal-head">
+      <div>
+        <div class="eyebrow">Signal Notes</div>
+        <p class="section-copy">Short signal notes adapted from NEXOR SIGNAL videos.</p>
+      </div>
+      <a class="link-arrow" href="/signal/">All notes <span>→</span></a>
+    </div>
+    <div class="grid-3 text-posts">
+      {heroPosts.map((post) => <PostCard post={post} />)}
+    </div>
+  </section>
+
+  <section class="container section">
+    <div class="split quiet-split">
+      <article class="card featured">
+        <div>
+          <small>Featured Essay</small>
+          <h3>{featured.title}</h3>
+          <p>{featured.description}</p>
+          <a class="link-arrow" href={`/essays/${featured.slug}/`}>Read the essay <span>→</span></a>
+        </div>
+        <div class="wave" aria-hidden="true"></div>
+      </article>
+      <MarketSnapshot />
+    </div>
+  </section>
+
+  <SupportSection />
+  <Newsletter />
+</BaseLayout>
